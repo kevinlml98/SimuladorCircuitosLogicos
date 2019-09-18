@@ -1,0 +1,60 @@
+
+
+
+
+#btnAND{
+    -fx-padding: 0;
+    -fx-graphic: url("img/andp.png");
+
+}
+
+#btnNAND{
+    -fx-padding: 0;
+    -fx-graphic: url("img/nandp.png");
+}
+
+#btnOR{
+    -fx-padding: 0;
+    -fx-graphic: url("img/orp.png");
+}
+
+#btnNOR{
+    -fx-padding: 0;
+    -fx-graphic: url("img/norp.png");
+}
+
+#btnXOR{
+    -fx-padding: 0;
+    -fx-graphic: url("img/xnorp.png");
+}
+
+#btnXNOR{
+    -fx-padding: 0;
+    -fx-graphic: url("img/xnorp.png");
+}
+
+#btnNOT{
+    -fx-padding: 0;
+    -fx-graphic: url("img/notp.png");
+}
+
+#btnAdd{
+    -fx-background-color: rgb(70,4,65);
+    -fx-text-fill: rgb(160,92,243);
+
+}
+
+#btnDelete{
+    -fx-background-color: rgb(70,4,65);
+    -fx-text-fill: rgb(160,92,243);
+}
+
+#btnSave{
+    -fx-background-color: rgb(70,4,65);
+    -fx-text-fill: rgb(160,92,243);
+}
+
+#vBox1{
+    -fx-background-color: rgb(70,4,65);
+}
+
