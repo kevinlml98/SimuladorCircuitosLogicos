@@ -39,7 +39,7 @@ public class node {
 
     private boolean typeGate(String nombre, boolean inPut1Val, boolean inPut2Val) {
 
-        System.out.println("Inicia la asignación salidas según el nombre de la compuerta");
+        System.out.println("Inicia la asignación salidas según el nombre de la compuerta: " + nombre );
         switch (nombre)
         {
             case "AND":

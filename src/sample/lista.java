@@ -16,12 +16,13 @@ public class lista {
         if (this.nodeFirst == null){
             this.nodeFirst = new node(gateName);
             listLenght++;
-            System.out.println("Compuerta creada");
+            System.out.println("Compuerta creada: " + listLenght);
         }else{
             node n = new node(gateName);
             n.nextNode =  this.nodeFirst;
             this.nodeFirst = n;
             listLenght++;
+            System.out.println("Compuerta creada: " + listLenght);
         }
     }
 

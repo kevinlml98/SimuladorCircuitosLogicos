@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +19,6 @@ public class Controller {
     int countXOR = 0;
     int countXNOR = 0;
     int countNOT = 0;
-
 
     @FXML
     private AnchorPane parent;
@@ -62,32 +62,31 @@ public class Controller {
 
 
 
-
-    @FXML
-    private Rectangle h;
-
-
     @FXML
     public void crear(MouseEvent event) {
-        String name = "hola" + countAND;
-        Rectangle a = new Rectangle(50, 50);
-        circuitPane.getChildren().add(a);
+        Rectangle gateAND = new Rectangle(50, 50);
+
         compuertas.addfirst("AND");
+        gateAND.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getSceneX();
+                double y = event.getSceneY();
+                double a = gateAND.getLayoutX();
+                double b = gateAND.getLayoutY();
+                //System.out.println("mouse x: " + x + " mouse y: " + y);
+                //System.out.println("square x: " + a + " square 7: " + b);
+                gateAND.setLayoutX(x - 100);
+                gateAND.setLayoutY(y);
+            }
+        });
+
+        circuitPane.getChildren().add(gateAND);
+
 
     }
 
 
-    @FXML
-    public void mover(MouseEvent event) {
-       double x = event.getSceneX();
-       double y = event.getSceneY();
-       double a = h.getLayoutX();
-       double b = h.getLayoutY();
-       System.out.println("mouse x: " + x + " mouse y: " + y);
-       System.out.println("square x: " + a + " square 7: " + b);
-       h.setLayoutX(x - 100);
-       h.setLayoutY(y);
-    }
 
 
 }
