@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -9,26 +11,35 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <HBox prefHeight="500.0" prefWidth="750.0">
+      <HBox prefHeight="600.0" prefWidth="800.0">
          <children>
-            <VBox fx:id="vBox1" prefHeight="500.0" prefWidth="100.0">
+            <VBox fx:id="vBox1" prefHeight="600.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="btnAND" mnemonicParsing="false" onMouseClicked="#crear" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnOR" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnXOR" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnNOT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnNAND" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnNOR" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <Button fx:id="btnXNOR" layoutX="10.0" layoutY="310.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" />
-                  <HBox prefHeight="20.0" prefWidth="100.0">
+                  <Button fx:id="btnAND" mnemonicParsing="false" onMouseClicked="#crear" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnOR" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnXOR" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnNOT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnNAND" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnNOR" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <Button fx:id="btnXNOR" layoutX="10.0" layoutY="310.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" />
+                  <HBox prefHeight="30.0" prefWidth="150.0">
                      <children>
-                        <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" text="-" />
-                        <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" text="..." />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="___">
+                           <font>
+                              <Font name="Bell MT Bold" size="17.0" />
+                           </font></Button>
+                        <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="...">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font></Button>
                      </children>
                   </HBox>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="+" />
+                  <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font></Button>
                </children>
             </VBox>
             <ScrollPane prefHeight="500.0" prefWidth="650.0">

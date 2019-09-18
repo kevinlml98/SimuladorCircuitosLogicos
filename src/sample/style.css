@@ -3,56 +3,92 @@
 
 
 #btnAND{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/andp.png");
+}
 
+
+:hover#btnAND{
+    -fx-graphic: url("img/andph.png");
 }
 
 #btnNAND{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/nandp.png");
 }
 
+:hover#btnNAND{
+    -fx-graphic: url("img/nandph.png");
+}
+
 #btnOR{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/orp.png");
 }
 
+:hover#btnOR{
+    -fx-graphic: url("img/orph.png");
+}
+
 #btnNOR{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/norp.png");
 }
 
+:hover#btnNOR{
+    -fx-graphic: url("img/norph.png");
+}
+
 #btnXOR{
-    -fx-padding: 0;
-    -fx-graphic: url("img/xnorp.png");
+    -fx-background-color: rgb(70,4,65);
+    -fx-graphic: url("img/xorp.png");
+}
+
+:hover#btnXOR{
+    -fx-graphic: url("img/xorph.png");
 }
 
 #btnXNOR{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/xnorp.png");
+}
+:hover#btnXNOR{
+    -fx-graphic: url("img/xnorph.png");
 }
 
 #btnNOT{
-    -fx-padding: 0;
+    -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/notp.png");
+}
+:hover#btnNOT{
+    -fx-graphic: url("img/notph.png");
 }
 
 #btnAdd{
     -fx-background-color: rgb(70,4,65);
     -fx-text-fill: rgb(160,92,243);
-
+}
+:hover#btnAdd{
+    -fx-text-fill: rgb(203,166,249);
 }
 
 #btnDelete{
     -fx-background-color: rgb(70,4,65);
     -fx-text-fill: rgb(160,92,243);
 }
+:hover#btnDelete{
+    -fx-text-fill: rgb(203,166,249);
+}
+
 
 #btnSave{
     -fx-background-color: rgb(70,4,65);
     -fx-text-fill: rgb(160,92,243);
 }
+:hover#btnSave{
+    -fx-text-fill: rgb(203,166,249);
+}
+
 
 #vBox1{
     -fx-background-color: rgb(70,4,65);
