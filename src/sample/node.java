@@ -1,5 +1,12 @@
 package sample;
 
+import javafx.event.EventHandler;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
+
 public class node {
 
     //___________________   Se declaran los argumentos del nodo; entradas conectadas, valor que posee las entradas, salida y nombre de la compuerta
@@ -12,12 +19,18 @@ public class node {
     private String gateName;
     private String inPut1Name;
     private String inPut2Name;
+    private String outPutName;
 
 
-    public node(String a){
-        gateName = a;
-        inPut1Val = false;
-        inPut2Val = false;
+
+    private GridPane gridPaneGate;
+
+
+    public node(String a, int b){
+        String c = String.valueOf(b);
+        gateName = a + c;
+        inPut1Val = true;
+        inPut2Val = true;
         inPut1Name = "FREE";
         inPut2Name = "FREE";
         if(a.equals("NOT")){
@@ -25,7 +38,55 @@ public class node {
         }else{
             outPut = typeGate(a,inPut1Val,inPut2Val);
         }
+        gridPaneGate = compuertaGrafica(a,b);
+        System.out.println(a + " input1 " + inPut1Val + " input2 " + inPut2Val + " salida " + outPut);
     }
+
+    //______________________ Crear el GridPane de la compuerta
+    private GridPane compuertaGrafica(String a,int numberOfGate) {
+        //___________Crea el GridPane que contiene los elementos de la compuerta
+
+        String c = String.valueOf(numberOfGate);
+        GridPane gridGate = new GridPane();
+
+        //___________ Etiquetas de las  patillas de las compuertas; entradas y salida.
+        Label gateName = new Label(a + c);
+        GridPane.setConstraints(gateName, 1, 0);
+        Label input1 = new Label("i1<" + inPut1Val + ">");
+        GridPane.setConstraints(input1, 0, 0);
+        Label input2 = new Label("i2<" + inPut2Val + ">");
+        GridPane.setConstraints(input2, 0, 2);
+        Label output = new Label("0<" + outPut + ">");
+        GridPane.setConstraints(output, 2, 1);
+
+        //________________________Imagen de la compuerta
+        Rectangle imageGate = new Rectangle(50, 50);
+        GridPane.setConstraints(imageGate, 1, 1);
+
+        //_______________ Introducir todos los elementos en el GridPane
+        gridGate.getChildren().addAll(gateName, imageGate, input1, input2, output);
+
+
+        //_________________________ Método para mover las compuertas
+        imageGate.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+                double x = event.getSceneX();
+                double y = event.getSceneY();
+
+                gridGate.setLayoutX(x - 185);
+                gridGate.setLayoutY(y - 15);
+
+
+            }
+        });
+
+        return gridGate;
+    }
+
+
+
 
     //_____________________ Método para configurar
     private boolean typeGate(boolean inPut1Val){
@@ -39,53 +100,68 @@ public class node {
 
     private boolean typeGate(String nombre, boolean inPut1Val, boolean inPut2Val) {
 
-        System.out.println("Inicia la asignación salidas según el nombre de la compuerta: " + nombre );
+        boolean resultOut = false;
+        System.out.println(nombre);
         switch (nombre)
         {
             case "AND":
                 if((inPut1Val == true) & (inPut2Val == true)){
-                    return true;
+                    resultOut = true;
                 }else{
-                    return false;
-                }
+                    resultOut = false;
+                }break;
+
             case "NAND":
                 if((inPut1Val == true) & (inPut2Val == true)){
-                    return false;
+                    resultOut = false;
                 }else{
-                    return true;
-                }
+                    resultOut = true;
+                }break;
 
             case "OR":
                 if((inPut1Val == true) | (inPut2Val == true)){
-                    return true;
+                    resultOut = true;
                 }else{
-                    return false;
-                }
+                    resultOut = false;
+                }System.out.println(resultOut);break;
+
             case "NOR":
                 if((inPut1Val == true) | (inPut2Val == true)){
-                    return false;
+                    resultOut = false;
                 }else{
-                    return true;
-                }
+                    resultOut = true;
+                }break;
+
             case "XOR":
                 if(inPut1Val == inPut2Val){
-                    return false;
+                    resultOut = false;
                 }else{
-                    return true;
-                }
+                    resultOut = true;
+                }break;
+
             case "XNOR":
                 if(inPut1Val == inPut2Val){
-                    return true;
+                    resultOut = true;
                 }else{
-                    return false;
-                }
+                    resultOut = false;
+                }break;
 
-            default:
-                System.out.println("Error al asignar valor a la compuerta");
-                return false;
         }
 
+        return resultOut;
+
     }
+
+
+
+
+
+
+
+
+
+
+
 
     public boolean isInPut1Val() {
         return inPut1Val;
@@ -135,6 +211,13 @@ public class node {
         this.inPut2Name = inPut2Name;
     }
 
+    public GridPane getGridPaneGate() {
+        return gridPaneGate;
+    }
+
+    public void setGridPaneGate(GridPane gridPaneGate) {
+        this.gridPaneGate = gridPaneGate;
+    }
 
 
 }

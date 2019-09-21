@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Simulador de Circuitos Lógicos");
 
 
-        primaryStage.setScene(new Scene(root, 790, 590));
+        primaryStage.setScene(new Scene(root, 890, 590));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
