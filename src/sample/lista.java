@@ -4,6 +4,11 @@ import javafx.scene.layout.GridPane;
 
 public class lista {
 
+    //________________ Se añade la referencia a la listaGraphicLine
+    listGraphicLine listLine = new listGraphicLine();
+
+
+
     //____________Se instancia el Nodo
 
     node nodeFirst;
@@ -27,39 +32,55 @@ public class lista {
             case 6: numberGateXNOR++; a = numberGateXNOR; break;
             case 7: numberGateNOT++; a = numberGateNOT; break;
         }
-        System.out.println(numberGateAND + " " + numberGateOR + " " + numberGateXOR);
         return a;
     }
 
-    //__________________ Méto constructor de lista, para instansiar
+
+    //__________________ Método constructor de lista, para instansiar
     public lista(){
         this.nodeFirst = null;
     }
+
+
+
+
 
     //__________________ Función para añadir nodos al inicio
     public void addfirst (String gateName, int number){
         if (this.nodeFirst == null){
             this.nodeFirst = new node(gateName, checkNumberGate(number));
+            this.nodeFirst.includeListGraphicLine(listLine);
             listLenght++;
-            System.out.println("Compuerta creada: " + listLenght);
         }else{
             node n = new node(gateName, checkNumberGate(number));
             n.nextNode =  this.nodeFirst;
             this.nodeFirst = n;
+            this.nodeFirst.includeListGraphicLine(listLine);
             listLenght++;
-            System.out.println("Compuerta creada: " + listLenght);
         }
     }
 
 
-    //__________________    Método para seleccionar nodo
+
+
+
+
+
+    //__________________ Función Seleccionar el Nodo (gate)
+    public void selectGate (String gateName){
+        node temp = this.nodeFirst;
+        while(temp.getGateName() != gateName){
+            temp = temp.nextNode;
+        }
+        System.out.println("Compuerta seleccionada: " + temp.getGateName());
+    }
+
+
+    //__________________    Método para adjuntar GridPane del nodo
     public GridPane addGridPane(){
         node temp = this.nodeFirst;
         return temp.getGridPaneGate();
     }
-
-
-
 
     //________________      Método para imprimir la lista de los nodos
     public void printList(){

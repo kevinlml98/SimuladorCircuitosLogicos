@@ -5,13 +5,20 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.fxml.Initializable;
+
+
 import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Controller {
-
+public class Controller  implements Initializable{
     lista compuertas = new lista();
+    listGraphicLine listUnionGate = new listGraphicLine();
+
 
 
     @FXML
@@ -56,60 +63,74 @@ public class Controller {
 
 
 
+
+
+
     @FXML
-    public void createGateAND(MouseEvent event) throws FileNotFoundException {
+    private void createGateAND(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
-        compuertas.addfirst("AND",1);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        compuertas.addfirst("AND",1 );
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateOR(MouseEvent event) throws FileNotFoundException {
+    private void createGateOR(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("OR",3);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateXOR(MouseEvent event) throws FileNotFoundException {
+    private void createGateXOR(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("XOR",5);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateNOT(MouseEvent event) throws FileNotFoundException {
+    private void createGateNOT(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("NOT",7);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateNAND(MouseEvent event) throws FileNotFoundException {
+    private void createGateNAND(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("NAND",2);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateNOR(MouseEvent event) throws FileNotFoundException {
+    private void createGateNOR(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("NOR",4);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
     @FXML
-    public void createGateXNOR(MouseEvent event) throws FileNotFoundException {
+    private void createGateXNOR(MouseEvent event) throws FileNotFoundException {
         //__________________Generar nodo de la compuerta
         compuertas.addfirst("XNOR",6);
-        circuitPane.getChildren().add(compuertas.addGridPane());
+        includeGateToCircuitPane(compuertas.addGridPane());
     }
 
 
 
 
+    //________________ Incluir los GridPane de las compuertas al circuitPane
+    private void includeGateToCircuitPane(GridPane gridGate){
+        circuitPane.getChildren().add(gridGate);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        listUnionGate.includeCircuitPane(circuitPane);
+        System.out.println("Bienvenido al Simulador de Circuitos Lógicos (SiCLo)");
+    }
 
 
+    //______________ Getters and Setters
 
 
 }

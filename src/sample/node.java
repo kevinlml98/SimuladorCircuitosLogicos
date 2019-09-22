@@ -1,13 +1,15 @@
 package sample;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.*;
+
 
 public class node {
+
 
     //___________________   Se declaran los argumentos del nodo; entradas conectadas, valor que posee las entradas, salida y nombre de la compuerta
 
@@ -17,10 +19,10 @@ public class node {
     private boolean outPut;
 
     private String gateName;
+    private String gateType;
     private String inPut1Name;
     private String inPut2Name;
-    private String outPutName;
-
+    private listGraphicLine listLine;
 
 
     private GridPane gridPaneGate;
@@ -28,6 +30,7 @@ public class node {
 
     public node(String a, int b){
         String c = String.valueOf(b);
+        gateType = a;
         gateName = a + c;
         inPut1Val = true;
         inPut2Val = true;
@@ -36,35 +39,111 @@ public class node {
         if(a.equals("NOT")){
             outPut = typeGate(inPut1Val);
         }else{
-            outPut = typeGate(a,inPut1Val,inPut2Val);
+            outPut = typeGate(gateType,inPut1Val,inPut2Val);
         }
-        gridPaneGate = compuertaGrafica(a,b);
-        System.out.println(a + " input1 " + inPut1Val + " input2 " + inPut2Val + " salida " + outPut);
+        gridPaneGate = compuertaGrafica(gateType,b);
     }
+
+
+
 
     //______________________ Crear el GridPane de la compuerta
     private GridPane compuertaGrafica(String a,int numberOfGate) {
         //___________Crea el GridPane que contiene los elementos de la compuerta
 
-        String c = String.valueOf(numberOfGate);
-        GridPane gridGate = new GridPane();
+            String c = String.valueOf(numberOfGate);
+            GridPane gridGate = new GridPane();
 
         //___________ Etiquetas de las  patillas de las compuertas; entradas y salida.
-        Label gateName = new Label(a + c);
-        GridPane.setConstraints(gateName, 1, 0);
-        Label input1 = new Label("i1<" + inPut1Val + ">");
-        GridPane.setConstraints(input1, 0, 0);
-        Label input2 = new Label("i2<" + inPut2Val + ">");
-        GridPane.setConstraints(input2, 0, 2);
-        Label output = new Label("0<" + outPut + ">");
-        GridPane.setConstraints(output, 2, 1);
+            Label input1 = new Label("i1<" + inPut1Name + ">");
+                GridPane.setConstraints(input1, 0, 0);
+            Label input2 = new Label("i2<" + inPut2Name + ">");
+            GridPane.setConstraints(input2, 0, 2);
+            Label output = new Label("0<" + outPut + ">");
+            GridPane.setConstraints(output, 1, 1);
 
         //________________________Imagen de la compuerta
-        Rectangle imageGate = new Rectangle(50, 50);
-        GridPane.setConstraints(imageGate, 1, 1);
+            String minuscula = a.toLowerCase();
+            BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("img/"+ minuscula +".png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            Background background = new Background(backgroundImage);
+            Button imageGate = new Button(c);
+            imageGate.setBackground(background);
+            imageGate.setPrefHeight(60);
+            imageGate.setPrefWidth(100);
+            GridPane.setConstraints(imageGate, 0, 1);
 
         //_______________ Introducir todos los elementos en el GridPane
-        gridGate.getChildren().addAll(gateName, imageGate, input1, input2, output);
+            gridGate.getChildren().addAll(imageGate, input1, input2, output);
+
+
+        //__________________ Método para seleccionar entradas y salidas
+        input1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                //_____________________ Inicia la creación de la linea
+                double x = gridGate.getLayoutX();
+                double y = gridGate.getLayoutY();
+
+                if(listLine.firstPointType == true) {
+                    inPut1Name = listLine.getNameGateSelected();
+                    inPut1Val = listLine.getValFeetGate();
+                    input1.setText("i1<" + inPut1Name + ">");
+                    listLine.pointPush(x + 5,y + 35);
+                    String a = inPut1Name.substring(0,3);
+                    System.out.println(a + " " + gateType);
+                    if(a.equals("NOT")){
+                        outPut = typeGate(inPut1Val);
+                        output.setText("0<" + outPut + ">");
+                    }else{
+                        outPut = typeGate(gateType,inPut1Val,inPut2Val);
+                        output.setText("0<" + outPut + ">");
+                    }
+                }
+
+            }
+        });
+
+
+        input2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                //_____________________ Inicia la creación de la linea
+                double x = gridGate.getLayoutX();
+                double y = gridGate.getLayoutY();
+
+                if(listLine.firstPointType == true) {
+                    inPut2Name = listLine.getNameGateSelected();
+                    inPut2Val = listLine.getValFeetGate();
+                    input2.setText("i1<" + inPut2Name + ">");
+                    listLine.pointPush(x + 5,y + 60);
+                    String a = inPut1Name.substring(0,3);
+                    System.out.println(a + " " + gateType);
+                    if(a.equals("NOT")){
+                        outPut = typeGate(inPut1Val);
+                        output.setText("0<" + outPut + ">");
+                    }else{
+                        outPut = typeGate(gateType,inPut1Val,inPut2Val);
+                        output.setText("0<" + outPut + ">");
+                    }
+                }
+            }
+        });
+
+
+        output.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                //_____________________ Inicia la creación de la linea
+                double x = gridGate.getLayoutX();
+                double y = gridGate.getLayoutY();
+
+                if(listLine.firstPointType == false){
+                    listLine.pointPull(x + 97, y + 47);
+                    listLine.setValFeetGate(outPut);
+                    listLine.setNameGateSelected(gateName);
+                }
+            }
+        });
 
 
         //_________________________ Método para mover las compuertas
@@ -75,8 +154,8 @@ public class node {
                 double x = event.getSceneX();
                 double y = event.getSceneY();
 
-                gridGate.setLayoutX(x - 185);
-                gridGate.setLayoutY(y - 15);
+                gridGate.setLayoutX(x - 200);
+                gridGate.setLayoutY(y - 30);
 
 
             }
@@ -84,8 +163,6 @@ public class node {
 
         return gridGate;
     }
-
-
 
 
     //_____________________ Método para configurar
@@ -101,7 +178,6 @@ public class node {
     private boolean typeGate(String nombre, boolean inPut1Val, boolean inPut2Val) {
 
         boolean resultOut = false;
-        System.out.println(nombre);
         switch (nombre)
         {
             case "AND":
@@ -123,7 +199,7 @@ public class node {
                     resultOut = true;
                 }else{
                     resultOut = false;
-                }System.out.println(resultOut);break;
+                }break;
 
             case "NOR":
                 if((inPut1Val == true) | (inPut2Val == true)){
@@ -153,6 +229,10 @@ public class node {
     }
 
 
+    //______________________ Incluir lista de direccionamiento
+    public void includeListGraphicLine(listGraphicLine listLine){
+        this.listLine = listLine;
+    }
 
 
 

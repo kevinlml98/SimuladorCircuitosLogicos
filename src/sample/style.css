@@ -1,13 +1,13 @@
 
 
-
+#circuitPane{
+    -fx-background-color: rgb(255,255,255);
+}
 
 #btnAND{
     -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/andp.png");
 }
-
-
 :hover#btnAND{
     -fx-graphic: url("img/andph.png");
 }
@@ -16,7 +16,6 @@
     -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/nandp.png");
 }
-
 :hover#btnNAND{
     -fx-graphic: url("img/nandph.png");
 }
@@ -25,7 +24,6 @@
     -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/orp.png");
 }
-
 :hover#btnOR{
     -fx-graphic: url("img/orph.png");
 }
@@ -34,7 +32,6 @@
     -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/norp.png");
 }
-
 :hover#btnNOR{
     -fx-graphic: url("img/norph.png");
 }
@@ -43,7 +40,6 @@
     -fx-background-color: rgb(70,4,65);
     -fx-graphic: url("img/xorp.png");
 }
-
 :hover#btnXOR{
     -fx-graphic: url("img/xorph.png");
 }
